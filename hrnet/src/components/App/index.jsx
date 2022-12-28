@@ -12,7 +12,6 @@ function App() {
         <Nav />
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
-          <Route exact path="/index" element={<Home />}></Route>
           <Route exact path="/employee-list" element={<EmployeeList />}></Route>
         </Routes>
       </BrowserRouter>
