@@ -1,6 +1,6 @@
 import "./style.scss";
 const EmployeeList = () => {
-  return <div></div>;
+  return <div>employee list</div>;
 };
 
 export default EmployeeList;
