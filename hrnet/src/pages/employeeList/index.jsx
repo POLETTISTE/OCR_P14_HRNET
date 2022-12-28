@@ -3,7 +3,7 @@ import Menu from "../../components/Menu";
 
 const EmployeeList = () => {
   return (
-    <div>
+    <div className="employee-page">
       <Menu />
     </div>
   );

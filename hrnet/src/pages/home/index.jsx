@@ -11,11 +11,11 @@ const Home = () => {
       <Menu classText="menu-text-active" />
 
       <form id="create-employee" onSubmit={onSubmit}>
-        <label htmlFor="first-name">First Name</label>
-        <input type="text" id="first-name" />
+        {/* <label htmlFor="first-name">First Name</label> */}
+        <input type="text" id="first-name" placeholder="first name" />
 
-        <label htmlFor="last-name">Last Name</label>
-        <input type="text" id="last-name" />
+        {/* <label htmlFor="last-name">Last Name</label> */}
+        <input type="text" id="last-name" placeholder="last name" />
 
         <label htmlFor="date-of-birth">Date of Birth</label>
         <input id="date-of-birth" type="text" />
