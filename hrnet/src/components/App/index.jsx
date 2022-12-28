@@ -1,8 +1,8 @@
-import "./App.css";
+import "./style.scss";
 
-import Nav from "./components/Nav";
-import Home from "./pages/Home";
-import EmployeeList from "./pages/EmployeeList";
+import Nav from "../Nav/index";
+import Home from "../../pages/Home/index";
+import EmployeeList from "../../pages/EmployeeList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {

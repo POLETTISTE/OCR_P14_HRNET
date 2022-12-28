@@ -1,0 +1,25 @@
+.title {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+input,
+select,
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin: auto;
+}
+.address {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,12 +1,10 @@
 import "./style.scss";
-import { NavLink } from "react-router-dom";
+import Menu from "../../components/Menu";
 
 const EmployeeList = () => {
   return (
     <div>
-      <h1>Current Employees</h1>
-
-      <NavLink to="/index">Home</NavLink>
+      <Menu />
     </div>
   );
 };
