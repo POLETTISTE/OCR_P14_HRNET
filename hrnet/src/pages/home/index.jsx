@@ -1,7 +1,23 @@
 import "./style.scss";
 import Menu from "../../components/Menu";
 
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const Home = () => {
+  const moment = require("moment");
+
+  const [firstNameEmployee, setFirstNameEmployee] = useState("");
+  const [lastNameEmployee, setLastNameEmployee] = useState("");
+  const [birthDateEmployee, setBirthDateEmployee] = useState(null);
+  const [streetEmployee, setStreetEmployee] = useState("");
+  const [cityEmployee, setCityEmployee] = useState("");
+  const [stateEmployee, setStateEmployee] = useState("");
+  const [zipCodeEmployee, setZipCodeEmployee] = useState("");
+  const [StartDateEmployee, setStartDateEmployee] = useState(null);
+  const [departmentEmployee, setDepartmentEmployee] = useState("");
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log("validation saveEmployee");
@@ -20,9 +36,19 @@ const Home = () => {
             <input type="text" id="last-name" required />
 
             <label htmlFor="date-of-birth">Date of Birth</label>
-            <input id="date-of-birth" type="text" required />
+            {/* <input id="date-of-birth" type="text" required /> */}
             {/* <fieldset className="address">
               <legend>Address</legend> */}
+            <DatePicker
+              id="date-of-birth"
+              selected={birthDateEmployee}
+              onChange={(date) => setBirthDateEmployee(date)}
+              // maxDate={moment().subtract(18, "years").format("MM-DD-YYYY")}
+              // filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
+              // showDisabledMonthNavigation
+              isClearable
+              required
+            />
 
             <label htmlFor="street">Street</label>
             <input id="street" type="text" required />
@@ -39,7 +65,14 @@ const Home = () => {
           </div>
           <div className="form-employee-details-job">
             <label htmlFor="start-date">Start Date</label>
-            <input id="start-date" type="text" required />
+            {/* <input id="start-date" type="text" required /> */}
+            <DatePicker
+              id="start-date"
+              selected={StartDateEmployee}
+              onChange={(date) => setStartDateEmployee(date)}
+              isClearable
+              required
+            />
 
             <label htmlFor="department">Department</label>
             <select name="department" id="department" required>
@@ -49,7 +82,7 @@ const Home = () => {
               <option>Human Resources</option>
               <option>Legal</option>
             </select>
-            <button type="submit" value="submit">
+            <button type="submit" value="submit" id="btn-submit">
               Save
             </button>
           </div>
