@@ -1,5 +1,4 @@
 import "./style.scss";
-
 import Nav from "../Nav/index";
 import Home from "../../pages/Home/index";
 import EmployeeList from "../../pages/EmployeeList";
