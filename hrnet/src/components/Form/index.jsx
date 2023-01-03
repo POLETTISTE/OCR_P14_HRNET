@@ -25,14 +25,13 @@ const Form = () => {
   };
   return (
     <StyledForm id="form" onSubmit={onSubmit}>
-      <StyledDivFormEmployeeDetails className="form-employee-details">
+      <StyledDivFormEmployee className="form-employee-details">
         <div className="form-employee-details-personnal">
           <StyledLabel htmlFor="first-name">First Name</StyledLabel>
           <StyledFormInput
             type="text"
             id="first-name"
             onChange={(e) => setFirstNameEmployee(e.target.value)}
-            required
           />
 
           <StyledLabel htmlFor="last-name">Last Name</StyledLabel>
@@ -40,7 +39,6 @@ const Form = () => {
             type="text"
             id="last-name"
             onChange={(e) => setLastNameEmployee(e.target.value)}
-            required
           />
           <StyledLabel htmlFor="date-of-birth">Date of Birth</StyledLabel>
           <StyledWrapperDatepicker>
@@ -54,8 +52,6 @@ const Form = () => {
               // showDisabledMonthNavigation
               showYearDropdown={true}
               scrollableMonthYearDropdown={true}
-              isClearable
-              required
             />
           </StyledWrapperDatepicker>
 
@@ -64,7 +60,6 @@ const Form = () => {
             id="street"
             type="text"
             onChange={(e) => setStreetEmployee(e.target.value)}
-            required
           />
 
           <StyledLabel htmlFor="city">City</StyledLabel>
@@ -72,15 +67,13 @@ const Form = () => {
             id="city"
             type="text"
             onChange={(e) => setCityEmployee(e.target.value)}
-            required
           />
 
           <StyledLabel htmlFor="state">State</StyledLabel>
           <StyledFormSelect
             name="state"
             id="state"
-            onChange={(e) => setStateEmployee(e.target.value)}
-            required>
+            onChange={(e) => setStateEmployee(e.target.value)}>
             {STATES.map((item) => (
               <option key={item.value} value={item.value}>
                 {item.name}
@@ -93,10 +86,10 @@ const Form = () => {
             id="zip-code"
             type="number"
             onChange={(e) => setZipCodeEmployee(e.target.value)}
-            required
           />
           {/* </fieldset> */}
         </div>
+
         <div className="form-employee-details-job">
           <StyledLabel htmlFor="start-date">Start Date</StyledLabel>
           <StyledWrapperDatepicker>
@@ -106,8 +99,6 @@ const Form = () => {
               onChange={(date) => setStartDateEmployee(date)}
               showYearDropdown={true}
               scrollableMonthYearDropdown={true}
-              isClearable
-              required
             />
           </StyledWrapperDatepicker>
 
@@ -115,19 +106,18 @@ const Form = () => {
           <StyledFormSelect
             name="department"
             id="department"
-            onChange={(e) => setDepartmentEmployee(e.target.value)}
-            required>
+            onChange={(e) => setDepartmentEmployee(e.target.value)}>
             {DEPARTMENTS.map((item) => (
               <option key={item.value} value={item.value}>
                 {item.name}
               </option>
             ))}
           </StyledFormSelect>
-          <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
-            Save
-          </StyledButtonSubmit>
         </div>
-      </StyledDivFormEmployeeDetails>
+        <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
+          Save
+        </StyledButtonSubmit>
+      </StyledDivFormEmployee>
     </StyledForm>
   );
 };
@@ -148,88 +138,29 @@ const StyledLabel = styled.label`
   width: fit-content;
 `;
 
-const StyledDivFormEmployeeDetails = styled.div`
+const StyledDivFormEmployee = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 100%;
-  @media (max-width: 1050px) {
+  @media (max-width: 900px) {
     flex-direction: column;
-  }
-`;
-
-const StyledFormInput = styled.input`
-  display: flex;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  margin: 0;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  padding-left: 15px;
-  background-color: rgb(226, 232, 227);
-  font-size: 25px;
-  border: none;
-  border-radius: 20px;
-  border-bottom: 2px solid black;
-  border-right: 2px solid black;
-  @media (max-width: 1050px) {
-    font-size: 12px;
-    width: 80%;
-  }
-`;
-
-const StyledFormSelect = styled.select`
-  display: flex;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  margin: 0;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  padding-left: 15px;
-  background-color: rgb(226, 232, 227);
-  font-size: 25px;
-  border: none;
-  border-radius: 20px;
-  border-bottom: 2px solid black;
-  border-right: 2px solid black;
-  @media (max-width: 1050px) {
-    font-size: 12px;
-    width: 80%;
-  }
-`;
-
-const StyledWrapperDatepicker = styled.div`
-  .react-datepicker {
-    box-shadow: 3px 2px 11px rgb(0 0 0 / 30%);
-  }
-  .react-datepicker__input-container input {
-    display: flex;
-    height: 40px;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 300px;
-    margin: 0;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    padding-left: 15px;
-    background-color: rgb(226, 232, 227);
-    font-size: 25px;
-    border: none;
-    border-radius: 20px;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    @media (max-width: 1050px) {
-      font-size: 12px;
-      width: 80%;
-    }
   }
 `;
+
+const StyledDivFormEmployeeJob = styled.div`
+  display: flex;
+  justify-content: space-around;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const StyledFormInput = styled.input``;
+
+const StyledFormSelect = styled.select``;
+
+const StyledWrapperDatepicker = styled.div``;
 
 const StyledButtonSubmit = styled.button`
   border-radius: 20px;
@@ -246,5 +177,8 @@ const StyledButtonSubmit = styled.button`
     background-color: white;
     border: 5px solid #6d8211;
     font-weight: 700;
+  }
+  @media (max-width: 900px) {
+    margin-bottom: 10px;
   }
 `;

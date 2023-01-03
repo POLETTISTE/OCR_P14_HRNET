@@ -1,22 +1,27 @@
-// ::placeholder {
-//   position: absolute;
-//   font-size: 12px;
-// }
-
-#btn-submit {
+input,
+select {
+  -ms-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  display: flex;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 1px 2px 1px 15px;
+  background-color: rgb(226, 232, 227);
+  font-size: 25px;
+  border: none;
   border-radius: 20px;
-  margin: auto;
-  margin-top: 80px;
-  width: 200px;
-  height: 50px;
-  background-color: #6d8211;
-  color: white;
-  font-size: 30px;
-  cursor: pointer;
-  &:hover {
-    color: #6d8211;
-    background-color: white;
-    border: 5px solid #6d8211;
-    font-weight: 700;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  @media (max-width: 900px) {
+    font-size: 12px;
+    width: 150px;
   }
 }
