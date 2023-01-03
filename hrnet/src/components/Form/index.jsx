@@ -113,10 +113,10 @@ const Form = () => {
               </option>
             ))}
           </StyledFormSelect>
+          <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
+            Save
+          </StyledButtonSubmit>
         </div>
-        <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
-          Save
-        </StyledButtonSubmit>
       </StyledDivFormEmployee>
     </StyledForm>
   );
@@ -180,5 +180,6 @@ const StyledButtonSubmit = styled.button`
   }
   @media (max-width: 900px) {
     margin-bottom: 10px;
+    width: 100px;
   }
 `;
