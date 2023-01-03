@@ -1,4 +1,5 @@
 import "./style.scss";
+import styled from "styled-components";
 import { STATES, DEPARTMENTS } from "./selectDropdowns";
 
 import React, { useState } from "react";
@@ -11,7 +12,6 @@ const Form = () => {
   const [firstNameEmployee, setFirstNameEmployee] = useState("");
   const [lastNameEmployee, setLastNameEmployee] = useState("");
   const [birthDateEmployee, setBirthDateEmployee] = useState(new Date());
-  console.log(birthDateEmployee);
   const [streetEmployee, setStreetEmployee] = useState("");
   const [cityEmployee, setCityEmployee] = useState("");
   const [stateEmployee, setStateEmployee] = useState("");
@@ -132,3 +132,9 @@ const Form = () => {
 };
 
 export default Form;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin: 0.7rem auto 0 auto;
+`;
