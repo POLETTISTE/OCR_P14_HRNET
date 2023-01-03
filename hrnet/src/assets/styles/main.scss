@@ -6,6 +6,10 @@ body {
   font-family: "Montserrat", "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @media (max-width: 900px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 
 code {

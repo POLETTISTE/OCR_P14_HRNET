@@ -147,15 +147,6 @@ const StyledDivFormEmployee = styled.div`
   }
 `;
 
-const StyledDivFormEmployeeJob = styled.div`
-  display: flex;
-  justify-content: space-around;
-  @media (max-width: 900px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
 const StyledFormInput = styled.input``;
 
 const StyledFormSelect = styled.select``;
