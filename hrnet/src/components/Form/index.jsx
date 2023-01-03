@@ -1,5 +1,5 @@
 import "./style.scss";
-// import Menu from "../../components/Menu";
+import { STATES, DEPARTMENTS } from "./selectDropdowns";
 
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
@@ -82,7 +82,12 @@ const Form = () => {
             id="state"
             onChange={(e) => setStateEmployee(e.target.value)}
             required>
-            <option>Select a State</option>
+            {STATES.map((item) => (
+              <option key={item.value} value={item.value}>
+                {item.name}
+              </option>
+            ))}
+            {/* <option>Select a State</option> */}
           </select>
 
           <label htmlFor="zip-code">Zip Code</label>
@@ -111,11 +116,11 @@ const Form = () => {
             id="department"
             onChange={(e) => setDepartmentEmployee(e.target.value)}
             required>
-            <option>Sales</option>
-            <option>Marketing</option>
-            <option>Engineering</option>
-            <option>Human Resources</option>
-            <option>Legal</option>
+            {DEPARTMENTS.map((item) => (
+              <option key={item.value} value={item.value}>
+                {item.name}
+              </option>
+            ))}
           </select>
           <button type="submit" value="submit" id="btn-submit">
             Save
