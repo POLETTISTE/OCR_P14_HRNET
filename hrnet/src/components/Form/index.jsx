@@ -24,7 +24,7 @@ const Form = () => {
     console.log("validation saveEmployee");
   };
   return (
-    <form id="form" onSubmit={onSubmit}>
+    <StyledForm id="form" onSubmit={onSubmit}>
       <div className="form-employee-details">
         <div className="form-employee-details-personnal">
           <label htmlFor="first-name">First Name</label>
@@ -127,7 +127,7 @@ const Form = () => {
           </button>
         </div>
       </div>
-    </form>
+    </StyledForm>
   );
 };
 
@@ -136,5 +136,7 @@ export default Form;
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 0.7rem auto 0 auto;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 `;

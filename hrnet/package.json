@@ -24,7 +24,8 @@
     "react-scripts": "^4.0.3",
     "redux": "^4.2.0",
     "styled-components": "^5.3.6",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.75.0"
   },
   "scripts": {
     "sass": "sass --watch ./src/styles/main.scss:./public/css/style.css --style compressed",
