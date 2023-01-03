@@ -5,9 +5,26 @@ import { STATES, DEPARTMENTS } from "./selectDropdowns";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { validationSchema } from "./validations";
+import { useForm } from "react-hook-form";
+import * as Yup from "yup";
+
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const Form = () => {
   // const moment = require("moment");
+
+  const { register, handleSubmit, formState, reset } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const { errors } = formState;
+
+  const onSubmit = (data) => {
+    console.log("validation saveEmployee");
+    console.log(data);
+    reset();
+  };
 
   const [firstNameEmployee, setFirstNameEmployee] = useState("");
   const [lastNameEmployee, setLastNameEmployee] = useState("");
@@ -19,20 +36,19 @@ const Form = () => {
   const [StartDateEmployee, setStartDateEmployee] = useState(null);
   const [departmentEmployee, setDepartmentEmployee] = useState("");
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log("validation saveEmployee");
-  };
   return (
-    <StyledForm id="form" onSubmit={onSubmit}>
+    <StyledForm id="form" onSubmit={handleSubmit(onSubmit)}>
       <StyledDivFormEmployee className="form-employee-details">
         <div className="form-employee-details-personnal">
           <StyledLabel htmlFor="first-name">First Name</StyledLabel>
           <StyledFormInput
+            {...register("name")}
+            name="name"
             type="text"
             id="first-name"
             onChange={(e) => setFirstNameEmployee(e.target.value)}
           />
+          <small className="text-danger">{errors.name?.message}</small>
 
           <StyledLabel htmlFor="last-name">Last Name</StyledLabel>
           <StyledFormInput
