@@ -22,6 +22,9 @@
     &:hover {
       font-weight: 700;
     }
+    @media (max-width: 1050px) {
+      font-size: 18px;
+    }
   }
 }
 

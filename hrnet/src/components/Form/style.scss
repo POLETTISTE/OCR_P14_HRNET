@@ -1,38 +1,7 @@
-label {
-  display: flex;
-  margin-left: 10px;
-  width: fit-content;
-}
-.form-employee-details {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
-
-::placeholder {
-  position: absolute;
-  font-size: 12px;
-}
-
-input,
-select {
-  display: flex;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  margin: 0;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  padding-left: 15px;
-  background-color: rgb(226, 232, 227);
-  font-size: 25px;
-  border: none;
-  border-radius: 20px;
-  border-bottom: 2px solid black;
-  border-right: 2px solid black;
-}
+// ::placeholder {
+//   position: absolute;
+//   font-size: 12px;
+// }
 
 #btn-submit {
   border-radius: 20px;
