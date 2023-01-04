@@ -236,7 +236,8 @@ const StyledWrapperDatepicker = styled.div``;
 const StyledButtonSubmit = styled.button`
   border-radius: 20px;
   margin: auto;
-  margin-top: 80px;
+  margin-top: 20px;
+  margin-bottom: 40px;
   width: 200px;
   height: 50px;
   background-color: #6d8211;
