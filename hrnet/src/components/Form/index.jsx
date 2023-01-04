@@ -190,10 +190,14 @@ const Form = () => {
           </StyledTextDanger>
         </div>
       </StyledDivFormEmployee>
-      <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
-        Save
-      </StyledButtonSubmit>
-      {modal ? <Modal onclick={handleClickBtnModal} /> : null}
+
+      {modal ? (
+        <Modal onclick={handleClickBtnModal} />
+      ) : (
+        <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
+          Save
+        </StyledButtonSubmit>
+      )}
     </StyledForm>
   );
 };

@@ -2,12 +2,14 @@ import "./style.scss";
 
 const Modal = (props) => {
   return (
-    <div className="modal">
-      <h2>CONFIRMATION</h2>
-      <p>Your employee has been well recorded !</p>
-      <button className="modal-div" onClick={props.onclick}>
-        close
-      </button>
+    <div className="modal-container">
+      <div className="modal-window">
+        <h2>CONFIRMATION</h2>
+        <p>Your employee has been well recorded !</p>
+        <button className="modal-btn" onClick={props.onclick}>
+          CLOSE
+        </button>
+      </div>
     </div>
   );
 };
