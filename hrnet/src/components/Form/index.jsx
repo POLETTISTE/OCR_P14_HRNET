@@ -59,6 +59,7 @@ const Form = () => {
             name="firstName"
             type="text"
             id="first-name"
+            placeholder="ex: Paul"
           />
           <StyledTextDanger className="text-danger">
             {errors.firstName?.message}
@@ -70,6 +71,7 @@ const Form = () => {
             name="lastName"
             type="text"
             id="last-name"
+            placeholder="ex: MacCoyle"
           />
           <StyledTextDanger className="text-danger">
             {errors.lastName?.message}
@@ -106,6 +108,7 @@ const Form = () => {
             name="street"
             id="street"
             type="text"
+            placeholder="ex: 123 Sunny Road"
           />
           <StyledTextDanger className="text-danger">
             {errors.street?.message}
@@ -117,6 +120,7 @@ const Form = () => {
             name="city"
             id="city"
             type="text"
+            placeholder="ex: Los Angeles"
           />
           <StyledTextDanger className="text-danger">
             {errors.city?.message}
@@ -124,6 +128,9 @@ const Form = () => {
 
           <StyledLabel htmlFor="state">State</StyledLabel>
           <StyledFormSelect {...register("state")} name="state" id="state">
+            <option disabled={false} value="">
+              --
+            </option>
             {STATES.map((item) => (
               <option key={item.value} value={item.value}>
                 {item.name}
@@ -140,6 +147,8 @@ const Form = () => {
             name="zipCode"
             id="zip-code"
             type="number"
+            pattern="[0-9]*"
+            placeholder="ex:90210"
           />
           <StyledTextDanger className="text-danger">
             {errors.zipCode?.message}
@@ -179,6 +188,9 @@ const Form = () => {
             {...register("department")}
             name="department"
             id="department">
+            <option disabled={false} value="" className="placeholder">
+              --
+            </option>
             {DEPARTMENTS.map((item) => (
               <option key={item.value} value={item.value}>
                 {item.name}
@@ -229,7 +241,9 @@ const StyledDivFormEmployee = styled.div`
 
 const StyledFormInput = styled.input``;
 
-const StyledFormSelect = styled.select``;
+const StyledFormSelect = styled.select`
+  color: green;
+`;
 
 const StyledWrapperDatepicker = styled.div``;
 

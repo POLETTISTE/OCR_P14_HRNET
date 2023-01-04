@@ -1,5 +1,6 @@
 input,
-select {
+select,
+textarea {
   -ms-box-sizing: content-box;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
@@ -12,21 +13,34 @@ select {
   width: 300px;
   margin: 0;
   margin-top: 5px;
-  margin-bottom: 10px;
   padding: 1px 2px 1px 15px;
   background-color: rgb(226, 232, 227);
-  font-size: 25px;
+  font-size: 16px;
   border: none;
   border-radius: 20px;
   border-bottom: 2px solid black;
   border-right: 2px solid black;
+  color: green;
+  font-weight: bolder;
+
   @media (max-width: 900px) {
     font-size: 12px;
     width: 150px;
   }
 }
 
+textarea:focus,
+input:focus {
+  color: black;
+}
+
 #start-date,
 #date-of-birth {
   cursor: pointer;
+}
+
+::placeholder {
+  color: GRAY;
+  font-size: 12px;
+  font-weight: normal;
 }

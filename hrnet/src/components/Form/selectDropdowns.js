@@ -1,9 +1,5 @@
 export const STATES = [
   {
-    name: "--choose a state--",
-    value: "",
-  },
-  {
     name: "Alabama",
     value: "AL",
   },
@@ -242,10 +238,6 @@ export const STATES = [
 ];
 
 export const DEPARTMENTS = [
-  {
-    name: "--choose a department--",
-    value: "",
-  },
   {
     name: "Sales",
     value: "Sales",

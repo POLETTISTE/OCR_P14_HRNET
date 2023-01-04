@@ -31,8 +31,8 @@ export const validationSchema = Yup.object().shape({
 
   zipCode: Yup.string()
     .required("zip code is required")
-    .min(6, "zip code must contain at least 6 characters ")
-    .max(6, "zip code must contain 6 characters maximum"),
+    .min(5, "zip code must contain at least 5 characters ")
+    .max(5, "zip code must contain 5 characters maximum"),
 
   startDate: Yup.string().required("date of start required"),
 
