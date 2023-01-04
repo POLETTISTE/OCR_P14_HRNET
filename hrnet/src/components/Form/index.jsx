@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { validationSchema } from "./validations";
 import { useForm } from "react-hook-form";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -20,48 +20,52 @@ const Form = () => {
 
   const { errors } = formState;
 
-  const onSubmit = (data) => {
+  const formOnSubmit = (data) => {
     console.log("validation saveEmployee");
     console.log(data);
     reset();
   };
 
-  const [firstNameEmployee, setFirstNameEmployee] = useState("");
-  const [lastNameEmployee, setLastNameEmployee] = useState("");
-  const [birthDateEmployee, setBirthDateEmployee] = useState(new Date());
-  const [streetEmployee, setStreetEmployee] = useState("");
-  const [cityEmployee, setCityEmployee] = useState("");
-  const [stateEmployee, setStateEmployee] = useState("");
-  const [zipCodeEmployee, setZipCodeEmployee] = useState("");
-  const [StartDateEmployee, setStartDateEmployee] = useState(null);
-  const [departmentEmployee, setDepartmentEmployee] = useState("");
+  // const [firstNameEmployee, setFirstNameEmployee] = useState("");
+  // const [lastNameEmployee, setLastNameEmployee] = useState("");
+  // const [birthDateEmployee, setBirthDateEmployee] = useState(new Date());
+  // const [streetEmployee, setStreetEmployee] = useState("");
+  // const [cityEmployee, setCityEmployee] = useState("");
+  // const [stateEmployee, setStateEmployee] = useState("");
+  // const [zipCodeEmployee, setZipCodeEmployee] = useState("");
+  // const [StartDateEmployee, setStartDateEmployee] = useState(new Date());
+  // const [departmentEmployee, setDepartmentEmployee] = useState("");
 
   return (
-    <StyledForm id="form" onSubmit={handleSubmit(onSubmit)}>
+    <StyledForm id="form" onSubmit={handleSubmit(formOnSubmit)}>
       <StyledDivFormEmployee className="form-employee-details">
         <div className="form-employee-details-personnal">
           <StyledLabel htmlFor="first-name">First Name</StyledLabel>
           <StyledFormInput
-            {...register("name")}
-            name="name"
+            {...register("firstName")}
+            name="firstName"
             type="text"
             id="first-name"
-            onChange={(e) => setFirstNameEmployee(e.target.value)}
           />
-          <small className="text-danger">{errors.name?.message}</small>
+          <small className="text-danger">{errors.firstName?.message}</small>
 
           <StyledLabel htmlFor="last-name">Last Name</StyledLabel>
           <StyledFormInput
+            {...register("lastName")}
+            name="lastName"
             type="text"
             id="last-name"
-            onChange={(e) => setLastNameEmployee(e.target.value)}
           />
-          <StyledLabel htmlFor="date-of-birth">Date of Birth</StyledLabel>
+          <small className="text-danger">{errors.lastName?.message}</small>
+
+          {/* <StyledLabel htmlFor="date-of-birth">Date of Birth</StyledLabel>
           <StyledWrapperDatepicker>
             <DatePicker
+              {...register("dateOfBirth")}
+              name="dateOfBirth"
               id="date-of-birth"
               selected={birthDateEmployee}
-              onChange={(date) => setBirthDateEmployee(date)}
+              onChange={(e) => setBirthDateEmployee(e.target.value)}
               // minDate={subDays(birthDayEmployee, 365)}
               // maxDate={moment().subtract(18, "years").format("MM-DD-YYYY")}
               // filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
@@ -69,70 +73,80 @@ const Form = () => {
               showYearDropdown={true}
               scrollableMonthYearDropdown={true}
             />
-          </StyledWrapperDatepicker>
+            <small className="text-danger">{errors.dateOfBirth?.message}</small>
+          </StyledWrapperDatepicker> */}
 
           <StyledLabel htmlFor="street">Street</StyledLabel>
           <StyledFormInput
+            {...register("street")}
+            name="street"
             id="street"
             type="text"
-            onChange={(e) => setStreetEmployee(e.target.value)}
           />
+          <small className="text-danger">{errors.street?.message}</small>
 
           <StyledLabel htmlFor="city">City</StyledLabel>
           <StyledFormInput
+            {...register("city")}
+            name="city"
             id="city"
             type="text"
-            onChange={(e) => setCityEmployee(e.target.value)}
           />
+          <small className="text-danger">{errors.city?.message}</small>
 
           <StyledLabel htmlFor="state">State</StyledLabel>
-          <StyledFormSelect
-            name="state"
-            id="state"
-            onChange={(e) => setStateEmployee(e.target.value)}>
+          <StyledFormSelect {...register("state")} name="state" id="state">
             {STATES.map((item) => (
               <option key={item.value} value={item.value}>
                 {item.name}
               </option>
             ))}
           </StyledFormSelect>
+          <small className="text-danger">{errors.state?.message}</small>
 
           <StyledLabel htmlFor="zip-code">Zip Code</StyledLabel>
           <StyledFormInput
+            {...register("zipCode")}
+            name="zipCode"
             id="zip-code"
             type="number"
-            onChange={(e) => setZipCodeEmployee(e.target.value)}
           />
+          <small className="text-danger">{errors.zipCode?.message}</small>
+
           {/* </fieldset> */}
         </div>
 
         <div className="form-employee-details-job">
-          <StyledLabel htmlFor="start-date">Start Date</StyledLabel>
+          {/* <StyledLabel htmlFor="start-date">Start Date</StyledLabel>
           <StyledWrapperDatepicker>
             <DatePicker
+              {...register("startDate")}
+              name="startDate"
               id="start-date"
               selected={StartDateEmployee}
               onChange={(date) => setStartDateEmployee(date)}
               showYearDropdown={true}
               scrollableMonthYearDropdown={true}
             />
-          </StyledWrapperDatepicker>
+            <small className="text-danger">{errors.startDate?.message}</small>
+          </StyledWrapperDatepicker> */}
 
           <StyledLabel htmlFor="department">Department</StyledLabel>
           <StyledFormSelect
+            {...register("department")}
             name="department"
-            id="department"
-            onChange={(e) => setDepartmentEmployee(e.target.value)}>
+            id="department">
             {DEPARTMENTS.map((item) => (
               <option key={item.value} value={item.value}>
                 {item.name}
               </option>
             ))}
           </StyledFormSelect>
-          <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
-            Save
-          </StyledButtonSubmit>
+          <small className="text-danger">{errors.department?.message}</small>
         </div>
+        <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
+          Save
+        </StyledButtonSubmit>
       </StyledDivFormEmployee>
     </StyledForm>
   );
