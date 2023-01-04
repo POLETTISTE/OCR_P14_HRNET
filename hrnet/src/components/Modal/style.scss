@@ -1,0 +1,15 @@
+.modal {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: green;
+
+  width: 40%;
+  height: 40%;
+  box-sizing: content-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

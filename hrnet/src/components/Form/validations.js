@@ -11,28 +11,33 @@ export const validationSchema = Yup.object().shape({
     .min(1, "last name must contain at least 1 character ")
     .max(50, "last name must contain 50 characters maximum"),
 
-  // dateOfBirth: Yup.string().required("date of birth required"),
+  dateOfBirth: Yup.string().required("date of birth required"),
   // .matches(
   //   /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/,
-  //   "DD/MM/YYYY required 😜"
-  // ),
+  //   "MM/DD/YYYY format required "
+  // )
+
   street: Yup.string()
     .required("street required")
     .min(1, "street must contain at least 1 character ")
     .max(50, "street must contain 50 characters maximum"),
+
   city: Yup.string()
-    .required("ce champ est obligatoire")
-    .min(1, "trop petit!")
-    .max(50, "trop long!"),
-  state: Yup.string().min(1, "Select a state").required("State required 😜"),
+    .required("city required")
+    .min(1, "city must contain at least 1 character ")
+    .max(50, "city must contain 50 characters maximum"),
+
+  state: Yup.string().min(1, "Select a state").required("State required "),
 
   zipCode: Yup.string()
-    .required("ce champ est obligatoire")
-    .min(6, "trop petit!")
-    .max(6, "trop long!"),
-  // startDate: Yup.string().required("date of start required"),
+    .required("zip code is required")
+    .min(6, "zip code must contain at least 6 characters ")
+    .max(6, "zip code must contain 6 characters maximum"),
+
+  startDate: Yup.string().required("date of start required"),
+
   department: Yup.string()
-    .required("ce champ est obligatoire")
-    .min(1, "trop petit!")
-    .max(20, "trop long!"),
+    .required("department is required")
+    .min(1, "city must contain at least 1 character ")
+    .max(20, "city must contain 20 characters maximum"),
 });

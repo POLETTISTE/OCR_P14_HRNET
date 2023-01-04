@@ -1,40 +1,53 @@
 import "./style.scss";
 import styled from "styled-components";
-import { STATES, DEPARTMENTS } from "./selectDropdowns";
 
+import Modal from "../Modal";
+
+import { STATES, DEPARTMENTS } from "./selectDropdowns";
 import React, { useState } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 import { validationSchema } from "./validations";
-import { useForm } from "react-hook-form";
-// import * as Yup from "yup";
+import DatePicker from "react-datepicker";
+import { Controller, useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const Form = () => {
-  // const moment = require("moment");
-
-  const { register, handleSubmit, formState, reset } = useForm({
+  const { control, register, handleSubmit, formState, reset } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
   const { errors } = formState;
 
+  const [birthDateEmployee, setBirthDateEmployee] = useState(new Date());
+  const [StartDateEmployee, setStartDateEmployee] = useState(new Date());
+  const [data, setData] = useState([]);
+  const [modal, setModal] = useState(false);
+
   const formOnSubmit = (data) => {
-    console.log("validation saveEmployee");
-    console.log(data);
+    // console.log("validation saveEmployee");
+    // console.log(data);
+    setData(data);
+    setModal(true);
     reset();
   };
 
-  // const [firstNameEmployee, setFirstNameEmployee] = useState("");
-  // const [lastNameEmployee, setLastNameEmployee] = useState("");
-  // const [birthDateEmployee, setBirthDateEmployee] = useState(new Date());
-  // const [streetEmployee, setStreetEmployee] = useState("");
-  // const [cityEmployee, setCityEmployee] = useState("");
-  // const [stateEmployee, setStateEmployee] = useState("");
-  // const [zipCodeEmployee, setZipCodeEmployee] = useState("");
-  // const [StartDateEmployee, setStartDateEmployee] = useState(new Date());
-  // const [departmentEmployee, setDepartmentEmployee] = useState("");
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = ("0" + date.getMonth() + 1).slice(-2);
+    let day = ("0" + date.getDate()).slice(-2);
+
+    return `${month}/${day}/${year}`;
+  };
+
+  // console.log(formatDate(new Date()));
+
+  function handleClickBtnModal(e) {
+    e.preventDefault();
+    // console.log("Le lien a été cliqué.");
+    setModal(false);
+  }
 
   return (
     <StyledForm id="form" onSubmit={handleSubmit(formOnSubmit)}>
@@ -47,7 +60,9 @@ const Form = () => {
             type="text"
             id="first-name"
           />
-          <small className="text-danger">{errors.firstName?.message}</small>
+          <StyledTextDanger className="text-danger">
+            {errors.firstName?.message}
+          </StyledTextDanger>
 
           <StyledLabel htmlFor="last-name">Last Name</StyledLabel>
           <StyledFormInput
@@ -56,25 +71,34 @@ const Form = () => {
             type="text"
             id="last-name"
           />
-          <small className="text-danger">{errors.lastName?.message}</small>
+          <StyledTextDanger className="text-danger">
+            {errors.lastName?.message}
+          </StyledTextDanger>
 
-          {/* <StyledLabel htmlFor="date-of-birth">Date of Birth</StyledLabel>
+          <StyledLabel htmlFor="date-of-birth">Date of Birth</StyledLabel>
           <StyledWrapperDatepicker>
-            <DatePicker
-              {...register("dateOfBirth")}
+            <Controller
+              control={control}
+              type="text"
               name="dateOfBirth"
-              id="date-of-birth"
-              selected={birthDateEmployee}
-              onChange={(e) => setBirthDateEmployee(e.target.value)}
-              // minDate={subDays(birthDayEmployee, 365)}
-              // maxDate={moment().subtract(18, "years").format("MM-DD-YYYY")}
-              // filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
-              // showDisabledMonthNavigation
-              showYearDropdown={true}
-              scrollableMonthYearDropdown={true}
+              render={({ field }) => (
+                <DatePicker
+                  id="date-of-birth"
+                  onChange={(date) =>
+                    setBirthDateEmployee(formatDate(date)) +
+                    field.onChange(date)
+                  }
+                  selected={field.value}
+                  showYearDropdown={true}
+                  scrollableMonthYearDropdown={true}
+                  format="MM/dd/yyyy"
+                />
+              )}
             />
-            <small className="text-danger">{errors.dateOfBirth?.message}</small>
-          </StyledWrapperDatepicker> */}
+            <StyledTextDanger className="text-danger">
+              {errors.dateOfBirth?.message}
+            </StyledTextDanger>
+          </StyledWrapperDatepicker>
 
           <StyledLabel htmlFor="street">Street</StyledLabel>
           <StyledFormInput
@@ -83,7 +107,9 @@ const Form = () => {
             id="street"
             type="text"
           />
-          <small className="text-danger">{errors.street?.message}</small>
+          <StyledTextDanger className="text-danger">
+            {errors.street?.message}
+          </StyledTextDanger>
 
           <StyledLabel htmlFor="city">City</StyledLabel>
           <StyledFormInput
@@ -92,7 +118,9 @@ const Form = () => {
             id="city"
             type="text"
           />
-          <small className="text-danger">{errors.city?.message}</small>
+          <StyledTextDanger className="text-danger">
+            {errors.city?.message}
+          </StyledTextDanger>
 
           <StyledLabel htmlFor="state">State</StyledLabel>
           <StyledFormSelect {...register("state")} name="state" id="state">
@@ -102,7 +130,9 @@ const Form = () => {
               </option>
             ))}
           </StyledFormSelect>
-          <small className="text-danger">{errors.state?.message}</small>
+          <StyledTextDanger className="text-danger">
+            {errors.state?.message}
+          </StyledTextDanger>
 
           <StyledLabel htmlFor="zip-code">Zip Code</StyledLabel>
           <StyledFormInput
@@ -111,25 +141,38 @@ const Form = () => {
             id="zip-code"
             type="number"
           />
-          <small className="text-danger">{errors.zipCode?.message}</small>
+          <StyledTextDanger className="text-danger">
+            {errors.zipCode?.message}
+          </StyledTextDanger>
 
           {/* </fieldset> */}
         </div>
 
         <div className="form-employee-details-job">
-          {/* <StyledLabel htmlFor="start-date">Start Date</StyledLabel>
+          <StyledLabel htmlFor="start-date">Start Date</StyledLabel>
           <StyledWrapperDatepicker>
-            <DatePicker
-              {...register("startDate")}
+            <Controller
+              control={control}
+              type="text"
               name="startDate"
-              id="start-date"
-              selected={StartDateEmployee}
-              onChange={(date) => setStartDateEmployee(date)}
-              showYearDropdown={true}
-              scrollableMonthYearDropdown={true}
+              render={({ field }) => (
+                <DatePicker
+                  id="start-date"
+                  onChange={(date) =>
+                    setStartDateEmployee(formatDate(date)) +
+                    field.onChange(date)
+                  }
+                  selected={field.value}
+                  showYearDropdown={true}
+                  scrollableMonthYearDropdown={true}
+                  format="MM/dd/yyyy"
+                />
+              )}
             />
-            <small className="text-danger">{errors.startDate?.message}</small>
-          </StyledWrapperDatepicker> */}
+            <StyledTextDanger className="text-danger">
+              {errors.startDate?.message}
+            </StyledTextDanger>
+          </StyledWrapperDatepicker>
 
           <StyledLabel htmlFor="department">Department</StyledLabel>
           <StyledFormSelect
@@ -142,12 +185,15 @@ const Form = () => {
               </option>
             ))}
           </StyledFormSelect>
-          <small className="text-danger">{errors.department?.message}</small>
+          <StyledTextDanger className="text-danger">
+            {errors.department?.message}
+          </StyledTextDanger>
         </div>
-        <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
-          Save
-        </StyledButtonSubmit>
       </StyledDivFormEmployee>
+      <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
+        Save
+      </StyledButtonSubmit>
+      {modal ? <Modal onclick={handleClickBtnModal} /> : null}
     </StyledForm>
   );
 };
@@ -202,5 +248,18 @@ const StyledButtonSubmit = styled.button`
   @media (max-width: 900px) {
     margin-bottom: 10px;
     width: 100px;
+  }
+`;
+
+const StyledTextDanger = styled.small`
+  display: flex;
+  margin-left: 10px;
+  width: fit-content;
+  color: red;
+  margin-bottom: 20px;
+  @media (max-width: 900px) {
+    justify-content: flex-start;
+    font-size: 12px;
+    width: 150px;
   }
 `;
