@@ -3,6 +3,10 @@ import styled from "styled-components";
 
 import Modal from "../Modal";
 
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { STATES, DEPARTMENTS } from "./selectDropdowns";
 import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
@@ -127,6 +131,7 @@ const Form = () => {
           </StyledTextDanger>
 
           <StyledLabel htmlFor="state">State</StyledLabel>
+
           <StyledFormSelect {...register("state")} name="state" id="state">
             <option disabled={false} value="">
               --
