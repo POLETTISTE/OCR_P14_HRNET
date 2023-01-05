@@ -151,7 +151,7 @@ const Form = () => {
             {...register("zipCode")}
             name="zipCode"
             id="zip-code"
-            type="number"
+            type="text"
             pattern="[0-9]*"
             placeholder="ex:90210"
           />
