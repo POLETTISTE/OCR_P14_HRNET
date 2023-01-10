@@ -2,46 +2,64 @@ import "./style.scss";
 import React from "react";
 import DataTable from "react-data-table-component";
 
+// const formatDate = (date) => {
+//   const year = date.getFullYear();
+//   const month = ("0" + date.getMonth() + 1).slice(-2);
+//   let day = ("0" + date.getDate()).slice(-2);
+
+//   return `${month}/${day}/${year}`;
+// };
+
 const columns = [
   {
     name: "id",
     selector: (row) => row.id,
+    sortable: true,
   },
   {
     name: "first name",
     selector: (row) => row.firstName,
+    sortable: true,
   },
   {
     name: "name",
     selector: (row) => row.name,
+    sortable: true,
   },
   {
     name: "start date",
     selector: (row) => row.startDate,
+    sortable: true,
   },
   {
     name: "department",
     selector: (row) => row.department,
+    sortable: true,
   },
   {
     name: "date of birth",
     selector: (row) => row.dateOfBirth,
+    sortable: true,
   },
   {
     name: "street",
     selector: (row) => row.street,
+    sortable: true,
   },
   {
     name: "city",
     selector: (row) => row.city,
+    sortable: true,
   },
   {
     name: "state",
     selector: (row) => row.state,
+    sortable: true,
   },
   {
     name: "zip code",
     selector: (row) => row.zipCode,
+    sortable: true,
   },
 ];
 
@@ -97,7 +115,9 @@ const data = [
 ];
 
 const Table = () => {
-  return <DataTable columns={columns} data={data} />;
+  return (
+    <DataTable columns={columns} data={data} pagination className="table" />
+  );
 };
 
 export default Table;
