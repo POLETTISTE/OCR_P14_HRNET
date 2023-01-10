@@ -16,27 +16,24 @@ const Form = () => {
 
   const { errors } = formState;
 
-  const [birthDateEmployee, setBirthDateEmployee] = useState(new Date());
-  const [StartDateEmployee, setStartDateEmployee] = useState(new Date());
-
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);
 
   const formOnSubmit = (data) => {
-    // console.log("validation saveEmployee");
-    // console.log(data);
+    console.log(data);
+
     setData(data);
     setModal(true);
     reset();
   };
 
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = ("0" + date.getMonth() + 1).slice(-2);
-    let day = ("0" + date.getDate()).slice(-2);
+  // const formatDate = (date) => {
+  //   const year = date.getFullYear();
+  //   const month = ("0" + date.getMonth() + 1).slice(-2);
+  //   let day = ("0" + date.getDate()).slice(-2);
 
-    return `${month}/${day}/${year}`;
-  };
+  //   return `${month}/${day}/${year}`;
+  // };
 
   function handleClickBtnModal(e) {
     e.preventDefault();
@@ -76,10 +73,7 @@ const Form = () => {
               render={({ field }) => (
                 <DatePicker
                   id="date-of-birth"
-                  onChange={(date) =>
-                    setBirthDateEmployee(formatDate(date)) +
-                    field.onChange(date)
-                  }
+                  onChange={(date) => field.onChange(date)}
                   selected={field.value}
                   showYearDropdown={true}
                   scrollableMonthYearDropdown={true}
@@ -148,10 +142,7 @@ const Form = () => {
               render={({ field }) => (
                 <DatePicker
                   id="start-date"
-                  onChange={(date) =>
-                    setStartDateEmployee(formatDate(date)) +
-                    field.onChange(date)
-                  }
+                  onChange={(date) => field.onChange(date)}
                   selected={field.value}
                   showYearDropdown={true}
                   scrollableMonthYearDropdown={true}
