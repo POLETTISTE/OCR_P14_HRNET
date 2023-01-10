@@ -1,3 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  &-employee-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    @media (max-width: 900px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+label {
+  display: flex;
+  margin-left: 10px;
+  width: fit-content;
+}
+
 input,
 select,
 textarea {
@@ -35,6 +58,8 @@ textarea {
   }
 }
 select {
+  color: green;
+
   cursor: pointer;
   background-image: linear-gradient(45deg, transparent 50%, white 50%),
     linear-gradient(135deg, white 50%, transparent 50%),
@@ -58,4 +83,40 @@ input:focus {
   color: GRAY;
   font-size: 12px;
   font-weight: normal;
+}
+
+#btn-submit {
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 200px;
+  height: 50px;
+  background-color: #6d8211;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  &:hover {
+    color: #6d8211;
+    background-color: white;
+    border: 5px solid #6d8211;
+    font-weight: 700;
+  }
+  @media (max-width: 900px) {
+    margin-bottom: 10px;
+    width: 100px;
+  }
+}
+
+small {
+  display: flex;
+  margin-left: 10px;
+  width: fit-content;
+  color: red;
+  margin-bottom: 20px;
+  @media (max-width: 900px) {
+    justify-content: flex-start;
+    font-size: 12px;
+    width: 150px;
+  }
 }

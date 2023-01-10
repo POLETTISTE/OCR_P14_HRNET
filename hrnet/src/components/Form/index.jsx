@@ -1,6 +1,5 @@
 import "./style.scss";
 import "react-datepicker/dist/react-datepicker.css";
-import styled from "styled-components";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import { EmployeeContext } from "../../utils/context";
@@ -39,44 +38,37 @@ const Form = () => {
     return `${month}/${day}/${year}`;
   };
 
-  // console.log(formatDate(new Date()));
-
   function handleClickBtnModal(e) {
     e.preventDefault();
-    // console.log("Le lien a été cliqué.");
     setModal(false);
   }
 
   return (
-    <StyledForm id="form" onSubmit={handleSubmit(formOnSubmit)}>
-      <StyledDivFormEmployee className="form-employee-details">
+    <form className="form" onSubmit={handleSubmit(formOnSubmit)}>
+      <div className="form-employee-details">
         <div className="form-employee-details-personnal">
-          <StyledLabel htmlFor="first-name">First Name</StyledLabel>
-          <StyledFormInput
+          <label htmlFor="first-name">First Name</label>
+          <input
             {...register("firstName")}
             name="firstName"
             type="text"
             id="first-name"
             placeholder="ex: Paul"
           />
-          <StyledTextDanger className="text-danger">
-            {errors.firstName?.message}
-          </StyledTextDanger>
+          <small className="text-danger">{errors.firstName?.message}</small>
 
-          <StyledLabel htmlFor="last-name">Last Name</StyledLabel>
-          <StyledFormInput
+          <label htmlFor="last-name">Last Name</label>
+          <input
             {...register("lastName")}
             name="lastName"
             type="text"
             id="last-name"
             placeholder="ex: MacCoyle"
           />
-          <StyledTextDanger className="text-danger">
-            {errors.lastName?.message}
-          </StyledTextDanger>
+          <small className="text-danger">{errors.lastName?.message}</small>
 
-          <StyledLabel htmlFor="date-of-birth">Date of Birth</StyledLabel>
-          <StyledWrapperDatepicker>
+          <label htmlFor="date-of-birth">Date of Birth</label>
+          <div>
             <Controller
               control={control}
               type="text"
@@ -95,38 +87,32 @@ const Form = () => {
                 />
               )}
             />
-            <StyledTextDanger className="text-danger">
-              {errors.dateOfBirth?.message}
-            </StyledTextDanger>
-          </StyledWrapperDatepicker>
+            <small className="text-danger">{errors.dateOfBirth?.message}</small>
+          </div>
 
-          <StyledLabel htmlFor="street">Street</StyledLabel>
-          <StyledFormInput
+          <label htmlFor="street">Street</label>
+          <input
             {...register("street")}
             name="street"
             id="street"
             type="text"
             placeholder="ex: 123 Sunny Road"
           />
-          <StyledTextDanger className="text-danger">
-            {errors.street?.message}
-          </StyledTextDanger>
+          <small className="text-danger">{errors.street?.message}</small>
 
-          <StyledLabel htmlFor="city">City</StyledLabel>
-          <StyledFormInput
+          <label htmlFor="city">City</label>
+          <input
             {...register("city")}
             name="city"
             id="city"
             type="text"
             placeholder="ex: Los Angeles"
           />
-          <StyledTextDanger className="text-danger">
-            {errors.city?.message}
-          </StyledTextDanger>
+          <small className="text-danger">{errors.city?.message}</small>
 
-          <StyledLabel htmlFor="state">State</StyledLabel>
+          <label htmlFor="state">State</label>
 
-          <StyledFormSelect {...register("state")} name="state" id="state">
+          <select {...register("state")} name="state" id="state">
             <option disabled={false} value="">
               --
             </option>
@@ -135,13 +121,11 @@ const Form = () => {
                 {item.name}
               </option>
             ))}
-          </StyledFormSelect>
-          <StyledTextDanger className="text-danger">
-            {errors.state?.message}
-          </StyledTextDanger>
+          </select>
+          <small className="text-danger">{errors.state?.message}</small>
 
-          <StyledLabel htmlFor="zip-code">Zip Code</StyledLabel>
-          <StyledFormInput
+          <label htmlFor="zip-code">Zip Code</label>
+          <input
             {...register("zipCode")}
             name="zipCode"
             id="zip-code"
@@ -149,16 +133,14 @@ const Form = () => {
             pattern="[0-9]*"
             placeholder="ex:90210"
           />
-          <StyledTextDanger className="text-danger">
-            {errors.zipCode?.message}
-          </StyledTextDanger>
+          <small className="text-danger">{errors.zipCode?.message}</small>
 
           {/* </fieldset> */}
         </div>
 
         <div className="form-employee-details-job">
-          <StyledLabel htmlFor="start-date">Start Date</StyledLabel>
-          <StyledWrapperDatepicker>
+          <label htmlFor="start-date">Start Date</label>
+          <div>
             <Controller
               control={control}
               type="text"
@@ -177,16 +159,11 @@ const Form = () => {
                 />
               )}
             />
-            <StyledTextDanger className="text-danger">
-              {errors.startDate?.message}
-            </StyledTextDanger>
-          </StyledWrapperDatepicker>
+            <small className="text-danger">{errors.startDate?.message}</small>
+          </div>
 
-          <StyledLabel htmlFor="department">Department</StyledLabel>
-          <StyledFormSelect
-            {...register("department")}
-            name="department"
-            id="department">
+          <label htmlFor="department">Department</label>
+          <select {...register("department")} name="department" id="department">
             <option disabled={false} value="" className="placeholder">
               --
             </option>
@@ -195,89 +172,20 @@ const Form = () => {
                 {item.name}
               </option>
             ))}
-          </StyledFormSelect>
-          <StyledTextDanger className="text-danger">
-            {errors.department?.message}
-          </StyledTextDanger>
+          </select>
+          <small className="text-danger">{errors.department?.message}</small>
         </div>
-      </StyledDivFormEmployee>
+      </div>
 
       {modal ? (
         <Modal onclick={handleClickBtnModal} />
       ) : (
-        <StyledButtonSubmit type="submit" value="submit" id="btn-submit">
+        <button type="submit" value="submit" id="btn-submit">
           Save
-        </StyledButtonSubmit>
+        </button>
       )}
-    </StyledForm>
+    </form>
   );
 };
 
 export default Form;
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-`;
-
-const StyledLabel = styled.label`
-  display: flex;
-  margin-left: 10px;
-  width: fit-content;
-`;
-
-const StyledDivFormEmployee = styled.div`
-  display: flex;
-  justify-content: space-around;
-  @media (max-width: 900px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const StyledFormInput = styled.input``;
-
-const StyledFormSelect = styled.select`
-  color: green;
-`;
-
-const StyledWrapperDatepicker = styled.div``;
-
-const StyledButtonSubmit = styled.button`
-  border-radius: 20px;
-  margin: auto;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  width: 200px;
-  height: 50px;
-  background-color: #6d8211;
-  color: white;
-  font-size: 30px;
-  cursor: pointer;
-  &:hover {
-    color: #6d8211;
-    background-color: white;
-    border: 5px solid #6d8211;
-    font-weight: 700;
-  }
-  @media (max-width: 900px) {
-    margin-bottom: 10px;
-    width: 100px;
-  }
-`;
-
-const StyledTextDanger = styled.small`
-  display: flex;
-  margin-left: 10px;
-  width: fit-content;
-  color: red;
-  margin-bottom: 20px;
-  @media (max-width: 900px) {
-    justify-content: flex-start;
-    font-size: 12px;
-    width: 150px;
-  }
-`;
