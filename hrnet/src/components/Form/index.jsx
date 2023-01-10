@@ -1,21 +1,14 @@
 import "./style.scss";
-import styled from "styled-components";
-
-import Modal from "../Modal";
-
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { STATES, DEPARTMENTS } from "./selectDropdowns";
-import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-
-import { validationSchema } from "./validations";
+import styled from "styled-components";
+import React, { useState } from "react";
 import DatePicker from "react-datepicker";
+import { EmployeeContext } from "../../utils/context";
 import { Controller, useForm } from "react-hook-form";
-
 import { yupResolver } from "@hookform/resolvers/yup";
+import { validationSchema } from "./validations";
+import { STATES, DEPARTMENTS } from "./selectDropdowns";
+import Modal from "../Modal";
 
 const Form = () => {
   const { control, register, handleSubmit, formState, reset } = useForm({
@@ -26,6 +19,7 @@ const Form = () => {
 
   const [birthDateEmployee, setBirthDateEmployee] = useState(new Date());
   const [StartDateEmployee, setStartDateEmployee] = useState(new Date());
+
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);
 
