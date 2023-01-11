@@ -1,6 +1,6 @@
 import "./style.scss";
 import "react-datepicker/dist/react-datepicker.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import DatePicker from "react-datepicker";
 import { EmployeeContext } from "../../utils/context";
 import { Controller, useForm } from "react-hook-form";
@@ -16,24 +16,30 @@ const Form = () => {
 
   const { errors } = formState;
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);
 
-  const formOnSubmit = (data) => {
-    console.log(data);
+  const { list, setList, addEmployee } = useContext(EmployeeContext);
+  console.log(list);
 
-    setData(data);
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = ("0" + date.getMonth() + 1).slice(-2);
+    let day = ("0" + date.getDate()).slice(-2);
+
+    return `${month}/${day}/${year}`;
+  };
+  const formOnSubmit = (data) => {
+    const convertStartDate = new Date(data.startDate);
+    const convertBirthDate = new Date(data.dateOfBirth);
+    data.startDate = formatDate(convertStartDate);
+    data.dateOfBirth = formatDate(convertBirthDate);
+
+    addEmployee(data);
+
     setModal(true);
     reset();
   };
-
-  // const formatDate = (date) => {
-  //   const year = date.getFullYear();
-  //   const month = ("0" + date.getMonth() + 1).slice(-2);
-  //   let day = ("0" + date.getDate()).slice(-2);
-
-  //   return `${month}/${day}/${year}`;
-  // };
 
   function handleClickBtnModal(e) {
     e.preventDefault();
@@ -74,6 +80,7 @@ const Form = () => {
                 <DatePicker
                   id="date-of-birth"
                   onChange={(date) => field.onChange(date)}
+                  // selected={formatDate(field.value)}
                   selected={field.value}
                   showYearDropdown={true}
                   scrollableMonthYearDropdown={true}
