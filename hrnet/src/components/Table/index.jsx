@@ -7,30 +7,14 @@ const dateSortStartDate = (rowA, rowB) => {
   const a = new Date(rowA.startDate);
   const b = new Date(rowB.startDate);
 
-  if (a > b) {
-    return 1;
-  }
-
-  if (b > a) {
-    return -1;
-  }
-
-  return 0;
+  return a > b ? 1 : -1;
 };
 
 const dateSortBirthDate = (rowA, rowB) => {
   const a = new Date(rowA.dateOfBirth);
   const b = new Date(rowB.dateOfBirth);
 
-  if (a > b) {
-    return 1;
-  }
-
-  if (b > a) {
-    return -1;
-  }
-
-  return 0;
+  return a > b ? 1 : -1;
 };
 
 const columns = [
