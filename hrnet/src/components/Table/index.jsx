@@ -3,6 +3,36 @@ import { useState, useContext } from "react";
 import DataTable from "react-data-table-component";
 import { EmployeeContext } from "../../utils/context";
 
+const dateSortStartDate = (rowA, rowB) => {
+  const a = new Date(rowA.startDate);
+  const b = new Date(rowB.startDate);
+
+  if (a > b) {
+    return 1;
+  }
+
+  if (b > a) {
+    return -1;
+  }
+
+  return 0;
+};
+
+const dateSortBirthDate = (rowA, rowB) => {
+  const a = new Date(rowA.dateOfBirth);
+  const b = new Date(rowB.dateOfBirth);
+
+  if (a > b) {
+    return 1;
+  }
+
+  if (b > a) {
+    return -1;
+  }
+
+  return 0;
+};
+
 const columns = [
   //   {
   //     name: "id",
@@ -15,7 +45,7 @@ const columns = [
     sortable: true,
   },
   {
-    name: "Name",
+    name: "Last Name",
     selector: (row) => row.lastName,
     sortable: true,
   },
@@ -23,6 +53,7 @@ const columns = [
     name: "Start Date",
     selector: (row) => row.startDate,
     sortable: true,
+    sortFunction: dateSortStartDate,
   },
   {
     name: "Department",
@@ -33,6 +64,7 @@ const columns = [
     name: "Date Of Birth",
     selector: (row) => row.dateOfBirth,
     sortable: true,
+    sortFunction: dateSortBirthDate,
   },
   {
     name: "Street",
@@ -205,7 +237,6 @@ const columns = [
 
 const Table = () => {
   const { list } = useContext(EmployeeContext);
-  console.log(list);
 
   const [search, setSearch] = useState("");
 
@@ -228,8 +259,8 @@ const Table = () => {
 
   return (
     <>
-      <label htmlFor="search">
-        Search employee:
+      <label htmlFor="search" className="search-bar">
+        Search employee :
         <input id="search" type="text" onChange={handleSearch} />
       </label>
       <DataTable

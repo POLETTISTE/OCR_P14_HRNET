@@ -78,7 +78,6 @@ const Form = () => {
                 <DatePicker
                   id="date-of-birth"
                   onChange={(date) => field.onChange(date)}
-                  // selected={formatDate(field.value)}
                   selected={field.value}
                   showYearDropdown={true}
                   scrollableMonthYearDropdown={true}
