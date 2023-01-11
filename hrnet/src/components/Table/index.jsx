@@ -3,14 +3,6 @@ import { useState, useContext } from "react";
 import DataTable from "react-data-table-component";
 import { EmployeeContext } from "../../utils/context";
 
-const formatDate = (date) => {
-  const year = date.getFullYear();
-  const month = ("0" + date.getMonth() + 1).slice(-2);
-  let day = ("0" + date.getDate()).slice(-2);
-
-  return `${month}/${day}/${year}`;
-};
-
 const columns = [
   //   {
   //     name: "id",

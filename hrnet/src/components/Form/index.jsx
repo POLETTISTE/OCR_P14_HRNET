@@ -16,11 +16,9 @@ const Form = () => {
 
   const { errors } = formState;
 
-  // const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);
 
-  const { list, setList, addEmployee } = useContext(EmployeeContext);
-  console.log(list);
+  const { addEmployee } = useContext(EmployeeContext);
 
   const formatDate = (date) => {
     const year = date.getFullYear();
