@@ -20,6 +20,10 @@ const Form = () => {
 
   const { addEmployee } = useContext(EmployeeContext);
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   const formatDate = (date) => {
     const year = date.getFullYear();
     const month = ("0" + date.getMonth() + 1).slice(-2);
@@ -27,9 +31,14 @@ const Form = () => {
 
     return `${month}/${day}/${year}`;
   };
+
   const formOnSubmit = (data) => {
     const convertStartDate = new Date(data.startDate);
     const convertBirthDate = new Date(data.dateOfBirth);
+    data.firstName = capitalizeFirstLetter(data.firstName.toLowerCase());
+    data.lastName = capitalizeFirstLetter(data.lastName.toLowerCase());
+    data.street = capitalizeFirstLetter(data.street.toLowerCase());
+    data.city = capitalizeFirstLetter(data.city.toLowerCase());
     data.startDate = formatDate(convertStartDate);
     data.dateOfBirth = formatDate(convertBirthDate);
 
