@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { fakeData } from "../data/fakeData";
 export const EmployeeContext = createContext();
 
@@ -7,7 +7,18 @@ export const EmployeeProvider = ({ children }) => {
 
   const addEmployee = (employee) => {
     setList([...list, employee]);
+    localStorage.setItem("list", JSON.stringify([...list, employee]));
+    console.log(list);
   };
+
+  useEffect(() => {
+    const employees = JSON.parse(localStorage.getItem("list"));
+    if (employees) {
+      setList(employees);
+    }
+    // localStorage.getItem("list", JSON.stringify(list));
+  }, [list]);
+
   return (
     <EmployeeContext.Provider value={{ list, setList, addEmployee }}>
       {children}
