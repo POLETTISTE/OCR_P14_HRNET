@@ -4,7 +4,7 @@
   "private": false,
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
-    "@polettiste/modalcomponent": "^1.0.0",
+    "@polettiste/modalcomponent": "^1.0.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -18,11 +18,12 @@
     "react-hook-form": "^7.40.0",
     "react-router-dom": "^6.6.1",
     "react-scripts": "^5.0.1",
+    "serve": "^14.1.2",
     "styled-components": "^5.3.6",
     "yup": "^0.32.11"
   },
   "scripts": {
-    "sass": "sass --watch ./src/styles/main.scss:./public/css/style.css --style compressed",
+    "sass": "sass --watch ./src/assets/styles/main.scss:./public/css/style.css --style compressed",
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
