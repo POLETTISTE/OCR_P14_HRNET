@@ -7,10 +7,12 @@ export const EmployeeProvider = ({ children }) => {
 
   const addEmployee = (employee) => {
     setList([...list, employee]);
+
+    // IF NEEDED TO RECORD IN LOCALSTORAGE TO PERSIST DATAS
     // localStorage.setItem("list", JSON.stringify([...list, employee]));
-    console.log(list);
   };
 
+  // IF NEEDED TO RECORD IN LOCALSTORAGE TO PERSIST DATAS
   // useEffect(() => {
   //   const employees = JSON.parse(localStorage.getItem("list"));
   //   if (employees) {

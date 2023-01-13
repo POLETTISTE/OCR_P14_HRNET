@@ -7,7 +7,7 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSchema } from "./validations";
 import { STATES, DEPARTMENTS } from "./selectDropdowns";
-import Modal from "../Modal";
+import { Modal } from "@polettiste/modalcomponent";
 
 const Form = () => {
   const { control, register, handleSubmit, formState, reset } = useForm({
@@ -182,7 +182,12 @@ const Form = () => {
       </div>
 
       {modal ? (
-        <Modal onclick={handleClickBtnModal} />
+        <Modal
+          title="CONFIRMATION"
+          text="Your employee has well been recorded !"
+          btnText="CLOSE"
+          onClick={handleClickBtnModal}
+        />
       ) : (
         <button type="submit" value="submit" id="btn-submit">
           Save
