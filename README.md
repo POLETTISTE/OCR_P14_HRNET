@@ -30,6 +30,10 @@ Any package manager such as npm or yarn is required.
 git clone git@github.com:POLETTISTE/OCR_P14_HRNET.git
 ```
 
+```bash
+cd hrnet
+```
+
 - Then access inside your local repository and install dependencies using :
 
 ```bash
