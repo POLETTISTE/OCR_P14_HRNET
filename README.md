@@ -46,6 +46,14 @@ npm install (or yarn)
  npm start (or yarn start)
 ```
 
+```bash
+ npm run build (or yarn build)
+```
+
+```bash
+  \serve -s build
+```
+
 ## USE the application
 
 The data is prefilled by default in order to make use of all the functionalities of the application. A **native React Context Store** is used here, and the final application should store data in online database anyway...
