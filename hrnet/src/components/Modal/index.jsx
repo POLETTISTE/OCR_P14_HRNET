@@ -1,17 +1,19 @@
-import "./style.scss";
+//MODAL COMPONENT BEFORE NPM PACKAGE CONVERT
 
-const Modal = (props) => {
-  return (
-    <div className="modal-container">
-      <div className="modal-window">
-        <h2>CONFIRMATION</h2>
-        <p>Your employee has well been recorded !</p>
-        <button className="modal-btn" onClick={props.onclick}>
-          CLOSE
-        </button>
-      </div>
-    </div>
-  );
-};
+// import "./style.scss";
 
-export default Modal;
+// const Modal = (props) => {
+//   return (
+//     <div className="modal-container">
+//       <div className="modal-window">
+//         <h2>CONFIRMATION</h2>
+//         <p>Your employee has well been recorded !</p>
+//         <button className="modal-btn" onClick={props.onclick}>
+//           CLOSE
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Modal;

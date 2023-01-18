@@ -1,5 +1,6 @@
 import * as Yup from "yup";
 
+// validations on submit form
 export const validationSchema = Yup.object().shape({
   firstName: Yup.string()
     .required("firstName required")

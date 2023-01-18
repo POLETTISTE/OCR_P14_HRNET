@@ -5,9 +5,9 @@ import { NavLink } from "react-router-dom";
 const Error = () => {
   return (
     <div className="error-message">
-      Désolé, la page que vous recherchez n'existe pas
+      Sorry, the page you're looking for doesn't exist
       <NavLink to={"/"}>
-        <p>retour à l'accueil</p>
+        <p>back to the home page</p>
       </NavLink>
     </div>
   );

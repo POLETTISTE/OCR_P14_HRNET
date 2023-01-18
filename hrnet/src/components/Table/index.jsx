@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import DataTable from "react-data-table-component";
 import { EmployeeContext } from "../../utils/context";
 
+//NEED TO BE RECONVERT FROM DISPLAY MODE TO BE SORTED
 const dateSortStartDate = (rowA, rowB) => {
   const a = new Date(rowA.startDate);
   const b = new Date(rowB.startDate);
@@ -10,6 +11,7 @@ const dateSortStartDate = (rowA, rowB) => {
   return a > b ? 1 : -1;
 };
 
+//NEED TO BE RECONVERT FROM DISPLAY MODE TO BE SORTED
 const dateSortBirthDate = (rowA, rowB) => {
   const a = new Date(rowA.dateOfBirth);
   const b = new Date(rowB.dateOfBirth);
@@ -76,6 +78,7 @@ const Table = () => {
     setSearch(event.target.value);
   };
 
+  //SEARCH BAR FILTER
   const filteredData = list.filter(
     (item) =>
       item.firstName.toLowerCase().includes(search.toLowerCase()) ||

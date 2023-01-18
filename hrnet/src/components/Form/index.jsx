@@ -10,20 +10,24 @@ import { STATES, DEPARTMENTS } from "./selectDropdowns";
 import { Modal } from "@polettiste/modalcomponent";
 
 const Form = () => {
+  //library react-hook-form
   const { control, register, handleSubmit, formState, reset } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
+  // library @hookform/resolvers/yup
   const { errors } = formState;
 
   const [modal, setModal] = useState(false);
 
   const { addEmployee } = useContext(EmployeeContext);
 
+  //displayed on submit in table
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  //displayed on submit in table
   const formatDate = (date) => {
     const year = date.getFullYear();
     const month = ("0" + date.getMonth() + 1).slice(-2);
