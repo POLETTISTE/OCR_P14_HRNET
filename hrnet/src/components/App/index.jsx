@@ -2,6 +2,7 @@ import "./style.scss";
 import Nav from "../Nav/index";
 import Home from "../../pages/Home/index";
 import EmployeeList from "../../pages/EmployeeList";
+import Error from "../../pages/Error";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { EmployeeProvider } from "../../utils/context";
 
@@ -17,6 +18,7 @@ function App() {
               exact
               path="/employee-list"
               element={<EmployeeList />}></Route>
+            <Route path="*" element={<Error />}></Route>
           </Routes>
         </EmployeeProvider>
       </BrowserRouter>
