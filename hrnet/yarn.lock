@@ -1572,10 +1572,10 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@polettiste/modalcomponent@^1.0.1":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@polettiste/modalcomponent/-/modalcomponent-1.0.2.tgz#491a965bd6090c8e2ab4efcf7959eb2d8081ab18"
-  integrity sha512-d0zPIke9mLQYGbdlVW8uGdpIkrG2etpdO8wTP2sOx8boKKXKgP2DAuCVBiAQ2B/GyH5YPdgcZLDJ4EPxWyqfJw==
+"@polettiste/modalcomponent@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@polettiste/modalcomponent/-/modalcomponent-1.0.3.tgz#7a885a9fef7b991f13fdef346095371eef191f88"
+  integrity sha512-MXlKIChcBEa5hkvHZFyplf9xtGnXYgM8znRj88zcwvPOPu45UMChwCTqtLTGYnTnXErOhoXCS5Rv7DarkGUtRg==
   dependencies:
     "@babel/polyfill" "^7.12.1"
 
