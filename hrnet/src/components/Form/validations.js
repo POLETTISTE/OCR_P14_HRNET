@@ -1,5 +1,6 @@
 import * as Yup from "yup";
 
+// validations on submit form
 export const validationSchema = Yup.object().shape({
   firstName: Yup.string()
     .required("firstName required")
@@ -12,10 +13,6 @@ export const validationSchema = Yup.object().shape({
     .max(50, "last name must contain 50 characters maximum"),
 
   dateOfBirth: Yup.string().required("date of birth required"),
-  // .matches(
-  //   /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/,
-  //   "MM/DD/YYYY format required "
-  // )
 
   street: Yup.string()
     .required("street required")

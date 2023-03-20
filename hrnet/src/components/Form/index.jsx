@@ -1,39 +1,56 @@
 import "./style.scss";
 import "react-datepicker/dist/react-datepicker.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import DatePicker from "react-datepicker";
 import { EmployeeContext } from "../../utils/context";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSchema } from "./validations";
 import { STATES, DEPARTMENTS } from "./selectDropdowns";
-import Modal from "../Modal";
+import { Modal } from "@polettiste/modalcomponent";
 
 const Form = () => {
+  //library react-hook-form
   const { control, register, handleSubmit, formState, reset } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
+  // library @hookform/resolvers/yup
   const { errors } = formState;
 
-  const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);
 
-  const formOnSubmit = (data) => {
-    console.log(data);
+  const { addEmployee } = useContext(EmployeeContext);
 
-    setData(data);
+  //displayed on submit in table
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  //displayed on submit in table
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = ("0" + date.getMonth() + 1).slice(-2);
+    let day = ("0" + date.getDate()).slice(-2);
+
+    return `${month}/${day}/${year}`;
+  };
+
+  const formOnSubmit = (data) => {
+    const convertStartDate = new Date(data.startDate);
+    const convertBirthDate = new Date(data.dateOfBirth);
+    data.firstName = capitalizeFirstLetter(data.firstName.toLowerCase());
+    data.lastName = capitalizeFirstLetter(data.lastName.toLowerCase());
+    data.street = capitalizeFirstLetter(data.street.toLowerCase());
+    data.city = capitalizeFirstLetter(data.city.toLowerCase());
+    data.startDate = formatDate(convertStartDate);
+    data.dateOfBirth = formatDate(convertBirthDate);
+
+    addEmployee(data);
+
     setModal(true);
     reset();
   };
-
-  // const formatDate = (date) => {
-  //   const year = date.getFullYear();
-  //   const month = ("0" + date.getMonth() + 1).slice(-2);
-  //   let day = ("0" + date.getDate()).slice(-2);
-
-  //   return `${month}/${day}/${year}`;
-  // };
 
   function handleClickBtnModal(e) {
     e.preventDefault();
@@ -169,7 +186,12 @@ const Form = () => {
       </div>
 
       {modal ? (
-        <Modal onclick={handleClickBtnModal} />
+        <Modal
+          title="CONFIRMATION"
+          text="Your employee has well been recorded !"
+          btnText="CLOSE"
+          onClick={handleClickBtnModal}
+        />
       ) : (
         <button type="submit" value="submit" id="btn-submit">
           Save
